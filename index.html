@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum Measurement Lab</title>
+<meta name="description" content="Design a quantum circuit and see what measuring one qubit, or all of them, actually does.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>Quantum Measurement Lab</h1>
+    <p>Design a circuit, then see what measuring one qubit or all of them does.</p>
+  </div>
+  <div class="topbar-actions">
+    <button id="theme-toggle" class="btn ghost" type="button">Dark mode</button>
+    <button id="labs-toggle" class="btn" type="button" aria-expanded="true" aria-controls="labs">Hide labs</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main class="workspace">
+    <section class="builder" aria-label="Circuit designer">
+      <div class="toolbar">
+        <div class="stepper" role="group" aria-label="Number of qubits">
+          <span class="stepper-label">Qubits</span>
+          <button id="qubit-minus" class="btn small" type="button" aria-label="Remove a qubit">−</button>
+          <output id="qubit-count">2</output>
+          <button id="qubit-plus" class="btn small" type="button" aria-label="Add a qubit">+</button>
+        </div>
+        <span class="toolbar-gap"></span>
+        <button id="measure-all" class="btn" type="button">Measure all qubits</button>
+        <button id="remove-measures" class="btn" type="button">Remove measurements</button>
+        <span class="toolbar-gap"></span>
+        <button id="undo" class="btn" type="button">Undo</button>
+        <button id="clear" class="btn" type="button">Clear</button>
+        <button id="share" class="btn" type="button">Copy link</button>
+      </div>
+
+      <div id="palette" class="palette" aria-label="Gates"></div>
+
+      <div class="circuit-row">
+        <div class="circuit-scroll" id="circuit-scroll">
+          <svg id="circuit" class="circuit" role="img" aria-label="Quantum circuit"></svg>
+        </div>
+        <aside id="inspector" class="inspector" aria-live="polite"></aside>
+      </div>
+
+      <div class="scrub" id="scrub"></div>
+    </section>
+
+    <section class="results" aria-label="Results">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" data-tab="state" type="button">State &amp; Bloch spheres</button>
+        <button class="tab" role="tab" data-tab="measure" type="button">Run measurements</button>
+        <button class="tab" role="tab" data-tab="compare" type="button">Compare: one qubit vs all</button>
+      </div>
+      <div id="panel" class="panel" role="tabpanel"></div>
+    </section>
+  </main>
+
+  <aside id="labs" class="labs" aria-label="Guided labs"></aside>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/quantum.js"></script>
+<script src="js/bloch.js"></script>
+<script src="js/labs.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
